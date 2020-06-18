@@ -55,24 +55,21 @@ namespace Second_lab
         static void AddDiscount()
         {
             Console.WriteLine("Enter information about a discount:");
-            string shop = ReadFromConsole("\tName of the shop: ");
+            string shop1 = ReadFromConsole("\tName of the shop: ");
 
-            int sizeOfDiscount;
-            while (true)
+            int sizeOfDiscount1;
+            while (!(int.TryParse(ReadFromConsole("\tSize of the discount (%): "), out sizeOfDiscount1) && sizeOfDiscount1 > 0 && sizeOfDiscount1 < 100))
             {
-                if (int.TryParse(ReadFromConsole("\tSize of the discount (%): "), out sizeOfDiscount) && (sizeOfDiscount > 0 && sizeOfDiscount < 100)) break;
-
                 Console.WriteLine("\tAn error: you need to input integer number of percentage (from 1 to 100).");
             }
 
-            DateTime expirationDate;
-            while (true)
+            DateTime expirationDate1;
+            while (!DateTime.TryParseExact(ReadFromConsole("\tExpiration date (dd mm yyyy): "), "dd MM yyyy", new CultureInfo("ru-Ru"), DateTimeStyles.None, out expirationDate1))
             {
-                if (DateTime.TryParseExact(ReadFromConsole("\tExpiration date (dd mm yyyy): "), "dd MM yyyy", new CultureInfo("ru-Ru"), DateTimeStyles.None, out expirationDate)) break;
                 Console.WriteLine("\tAn error: you need to input date properly (dd MM yyyy).");
             }
 
-            if (journal.AddNewDiscount(shop, sizeOfDiscount, expirationDate)) Console.WriteLine("The discount was succesfuuly added.");
+            if (journal.AddNewDiscount(shop1, sizeOfDiscount1, expirationDate1)) Console.WriteLine("The discount was succesfuuly added.");
             else Console.WriteLine("You have already got a discount in this shop.");
         }
 
@@ -92,9 +89,9 @@ namespace Second_lab
 
             foreach (Discount d in journal.GetSortList())
             {
-                response += $"\t{dcounter}. The name of shop: {d.GetShop()}\n" +
-                    $"\t   Size of discount: {d.GetSizeOfDiscount()}\n" +
-                    $"\t   Expiration date: {d.GetExpirationDate():d};\n";
+                response += $"\t{dcounter}. The name of shop: {d.Shop}\n" +
+                    $"\t   Size of discount: {d.SizeOfDiscount}\n" +
+                    $"\t   Expiration date: {d.ExpirationDate:d};\n";
                 dcounter++;
             }
 

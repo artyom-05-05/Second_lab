@@ -16,7 +16,7 @@ namespace Second_lab
 
         public bool AddNewDiscount(string shop, int sizeOfDiscount, DateTime expirationDate)
         {
-            if (journal.Any(o => o.GetShop() == shop)) return false;
+            if (journal.Any(o => o.Shop == shop)) return false;
 
             journal.Add(new Discount(shop, sizeOfDiscount, expirationDate));
             return true;
@@ -24,15 +24,15 @@ namespace Second_lab
 
         public bool DeleteDiscount(string shop)
         {
-            if (!journal.Any(o => o.GetShop() == shop)) return false;
+            if (!journal.Any(o => o.Shop == shop)) return false;
 
-            journal.Remove(journal.Find(o => o.GetShop() == shop));
+            journal.Remove(journal.Find(o => o.Shop == shop));
             return true;
         }
 
         public List<Discount> GetSortList()
         {
-            List<Discount> sortList = journal.OrderBy(d => d.GetShop()).ToList();
+            List<Discount> sortList = journal.OrderBy(d => d.Shop).ToList();
             return sortList;
         }
     }
