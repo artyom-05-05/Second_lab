@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="DiscountJournal" type="DiscountJournalType"/>
+
+	<xs:complexType name="DiscountJournalType">
+		<xs:sequence>
+			<xs:element name="DiscountJournal" type="Discount" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Discount">
+		<xs:sequence>
+			<xs:element name="Shop" type="xs:string"/>
+			<xs:element name="SizeOfDiscount" type="xs:int"/>
+			<xs:element name="ExpirationDate" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>
