@@ -20,7 +20,7 @@ namespace Second_lab
         public static void SaveToXML(string path, Discount_journal journal)
         {
             XDocument xdoc = new XDocument(new XElement("DiscountJournal",
-                    journal.DiscountList.Select(o => new XElement("Duscount",                                                      // этот момент j,]zcybnm
+                    journal.DiscountList.Select(o => new XElement("Duscount",
                     new XElement[] { new XElement("Shop", o.Shop),
                                      new XElement("SizeOfDiscount", o.SizeOfDiscount),
                                      new XElement("ExpirationDate", o.ExpirationDate)})).ToArray()));

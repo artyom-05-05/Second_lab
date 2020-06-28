@@ -2,11 +2,15 @@
 
 namespace Second_lab
 {
-    class Discount
+    [Serializable]
+    public class Discount
     {
         public string Shop { get; private set; }
         public int SizeOfDiscount { get; private set; }
         public DateTime ExpirationDate { get; private set; }
+
+        public Discount()
+        { }
 
         public Discount(string shop, int sizeOfDiscount, DateTime expirationDate)
         {

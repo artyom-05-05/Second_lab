@@ -4,11 +4,15 @@ using System.Collections.Generic;
 
 namespace Second_lab
 {
-    class Discount_journal
+    [Serializable]
+    public class Discount_journal
     {
-        private string discountJournalName;
+        string discountJournalName;
 
         public List<Discount> DiscountList { get; private set; }
+
+        public Discount_journal()
+        { }
 
         public Discount_journal(string discountJournalName)
         {
