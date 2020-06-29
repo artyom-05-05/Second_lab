@@ -32,7 +32,7 @@ namespace Second_lab
             var discounts = new List<DiscountType>();
 
             journal.DiscountList.ForEach(o => discounts.Add(new DiscountType(o.Shop, o.SizeOfDiscount, o.ExpirationDate)));
-            currentList.Discount = discounts.ToArray();    /// эта строчка не понятна
+            currentList.Discount = discounts.ToArray();
 
             using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
             {

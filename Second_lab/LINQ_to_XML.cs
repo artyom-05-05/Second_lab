@@ -10,7 +10,7 @@ namespace Second_lab
         {
             Discount_journal journal = new Discount_journal("Discount_journal_FROM_XML_File");
 
-            XDocument.Load(path).Descendants("Discount_journal").ToList().First().Descendants("Discount").ToList().    // зачем First()
+            XDocument.Load(path).Descendants("DiscountJournal").ToList().First().Descendants("Discount").ToList().
                 ForEach(discount => journal.AddNewDiscount((string)discount.Element("Shop"), 
                 (int)discount.Element("SizeOfDiscount"), (DateTime)discount.Element("ExpirationDate")));
 
@@ -20,7 +20,7 @@ namespace Second_lab
         public static void SaveToXML(string path, Discount_journal journal)
         {
             XDocument xdoc = new XDocument(new XElement("DiscountJournal",
-                    journal.DiscountList.Select(o => new XElement("Duscount",
+                    journal.DiscountList.Select(o => new XElement("Discount",
                     new XElement[] { new XElement("Shop", o.Shop),
                                      new XElement("SizeOfDiscount", o.SizeOfDiscount),
                                      new XElement("ExpirationDate", o.ExpirationDate)})).ToArray()));

@@ -10,14 +10,17 @@ namespace Second_lab
         string discountJournalName;
 
         public List<Discount> DiscountList { get; private set; }
-
+        
         public Discount_journal()
-        { }
+        {
+            this.DiscountList = new List<Discount>();
+        }
 
         public Discount_journal(string discountJournalName)
         {
+            this.DiscountList = new List<Discount>();
             this.discountJournalName = discountJournalName;
-        }
+        }        
 
         public bool AddNewDiscount(string shop, int sizeOfDiscount, DateTime expirationDate)
         {
