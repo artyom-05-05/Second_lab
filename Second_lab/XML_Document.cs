@@ -10,7 +10,9 @@ namespace Second_lab
         {
             XmlDocument xdoc = new XmlDocument();
 
-            XmlElement xroot = xdoc.CreateElement("Discount_journal");
+            XmlElement xroot = xdoc.CreateElement("DiscountJournal");
+            xroot.SetAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
+            xroot.SetAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
 
             journal.DiscountList.ForEach(discount =>
             {

@@ -19,7 +19,13 @@ namespace Second_lab
 
         public static void SaveToXML(string path, Discount_journal journal)
         {
+            XNamespace xsd = "http://www.w3.org/2001/XMLSchema";
+            XNamespace xsi = "http://www.w3.org/2001/XMLSchema-instance";
+
             XDocument xdoc = new XDocument(new XElement("DiscountJournal",
+                new XAttribute(XNamespace.Xmlns + "xsd", xsd.NamespaceName),
+                new XAttribute(XNamespace.Xmlns + "xsi", xsi.NamespaceName),
+
                     journal.DiscountList.Select(o => new XElement("Discount",
                     new XElement[] { new XElement("Shop", o.Shop),
                                      new XElement("SizeOfDiscount", o.SizeOfDiscount),
